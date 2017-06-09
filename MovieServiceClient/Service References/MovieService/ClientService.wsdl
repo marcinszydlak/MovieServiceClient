@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ClientService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:51079/ClientService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:51079/ClientService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:51079/ClientService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common.Models" />
+      <xsd:import schemaLocation="http://localhost:51079/ClientService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IClientService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetSeancesByMovieId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeancesByMovieId" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetSeancesByMovieId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeancesByMovieIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetSeancesByTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeancesByTitle" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetSeancesByTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeancesByTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddReservationSinglePosition_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservationSinglePosition" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddReservationSinglePosition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservationSinglePositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddReservationMultiplePosition_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservationMultiplePosition" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_AddReservationMultiplePosition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddReservationMultiplePositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservation" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetReservations_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservations" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetReservations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_RemoveReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveReservation" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_RemoveReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_RemoveReservations_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveReservations" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_RemoveReservations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveReservationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetMovie_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMovie" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetMovie_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetMovies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMovies" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetMovies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMoviesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetCinemaHall_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCinemaHall" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetCinemaHall_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCinemaHallResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetCinemaHallsForMovie_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCinemaHallsForMovie" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetCinemaHallsForMovie_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCinemaHallsForMovieResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetActualCinemaHallState_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActualCinemaHallState" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_GetActualCinemaHallState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActualCinemaHallStateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IClientService">
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/Login" message="tns:IClientService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/LoginResponse" message="tns:IClientService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeancesByMovieId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetSeancesByMovieId" message="tns:IClientService_GetSeancesByMovieId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetSeancesByMovieIdResponse" message="tns:IClientService_GetSeancesByMovieId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeancesByTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetSeancesByTitle" message="tns:IClientService_GetSeancesByTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetSeancesByTitleResponse" message="tns:IClientService_GetSeancesByTitle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReservationSinglePosition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/AddReservationSinglePosition" message="tns:IClientService_AddReservationSinglePosition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/AddReservationSinglePositionResponse" message="tns:IClientService_AddReservationSinglePosition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddReservationMultiplePosition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/AddReservationMultiplePosition" message="tns:IClientService_AddReservationMultiplePosition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/AddReservationMultiplePositionResponse" message="tns:IClientService_AddReservationMultiplePosition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetReservation" message="tns:IClientService_GetReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetReservationResponse" message="tns:IClientService_GetReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetReservations" message="tns:IClientService_GetReservations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetReservationsResponse" message="tns:IClientService_GetReservations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/RemoveReservation" message="tns:IClientService_RemoveReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/RemoveReservationResponse" message="tns:IClientService_RemoveReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveReservations">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/RemoveReservations" message="tns:IClientService_RemoveReservations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/RemoveReservationsResponse" message="tns:IClientService_RemoveReservations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMovie">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetMovie" message="tns:IClientService_GetMovie_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetMovieResponse" message="tns:IClientService_GetMovie_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMovies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetMovies" message="tns:IClientService_GetMovies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetMoviesResponse" message="tns:IClientService_GetMovies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCinemaHall">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetCinemaHall" message="tns:IClientService_GetCinemaHall_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetCinemaHallResponse" message="tns:IClientService_GetCinemaHall_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCinemaHallsForMovie">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetCinemaHallsForMovie" message="tns:IClientService_GetCinemaHallsForMovie_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetCinemaHallsForMovieResponse" message="tns:IClientService_GetCinemaHallsForMovie_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActualCinemaHallState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetActualCinemaHallState" message="tns:IClientService_GetActualCinemaHallState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/GetActualCinemaHallStateResponse" message="tns:IClientService_GetActualCinemaHallState_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IClientService" type="tns:IClientService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IClientService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeancesByMovieId">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetSeancesByMovieId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeancesByTitle">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetSeancesByTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReservationSinglePosition">
+      <soap:operation soapAction="http://tempuri.org/IClientService/AddReservationSinglePosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddReservationMultiplePosition">
+      <soap:operation soapAction="http://tempuri.org/IClientService/AddReservationMultiplePosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservation">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservations">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetReservations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveReservation">
+      <soap:operation soapAction="http://tempuri.org/IClientService/RemoveReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveReservations">
+      <soap:operation soapAction="http://tempuri.org/IClientService/RemoveReservations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovie">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMovies">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetMovies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCinemaHall">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetCinemaHall" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCinemaHallsForMovie">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetCinemaHallsForMovie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActualCinemaHallState">
+      <soap:operation soapAction="http://tempuri.org/IClientService/GetActualCinemaHallState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientService">
+    <wsdl:port name="BasicHttpBinding_IClientService" binding="tns:BasicHttpBinding_IClientService">
+      <soap:address location="http://localhost:51079/ClientService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,240 @@
+﻿<Window x:Class="ClientWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientWPF"
+        mc:Ignorable="d"
+        Title="Serwis do rezerwacji filmów w kinie" Height="500" Width="800" MinHeight="500" MinWidth="800">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="DatePicker">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="0,5" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="0,5" />
+            </Style>
+            <Style TargetType="GroupBox">
+                <Setter Property="BorderBrush" Value="Black" />
+                <Setter Property="Margin" Value="5"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="5"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="HorizontalAlignment" Value="Right" />
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="Width" Value="100"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Content="Zalogowany jako :"/>
+            <Label Grid.Column="1" Name="UzytkownikLabel" Content="Uzytkownik"/>
+            <Button Grid.Column="2" Content="Wyloguj"/>
+        </Grid>
+        <TabControl Name="MainTabControl" Grid.Row="1">
+            <TabItem Header="Zarezerwuj">
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="DataGrid">
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="160"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Dane wyszukiwania" Grid.Row="0" Grid.Column="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition Height="30"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Tytul :" />
+                            <Label Grid.Row="1" Grid.Column="0" Content="Data od :"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Data do :"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Name="TitleTextBox"/>
+                            <DatePicker Name="DataOdDatePicker" Grid.Row="1" Grid.Column="1" />
+                            <DatePicker Name="DataDoDatePicker" Grid.Row="2" Grid.Column="1" />
+                            <Button Name="ZatwierdzWyszukiwanieButton" Content="Wyszukaj seanse" Grid.Row="3" Grid.ColumnSpan="2" Click="ZatwierdzWyszukiwanieButton_Click" Height="21" Margin="0,5,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Dane filmu" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Tytuł filmu : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Reżyser : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Rok wydania : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="3" Grid.Column="0" Content="Ocena : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Zdjecie : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="0" Grid.Column="1" Name="TytulFilmuDane" Content="[Tytuł filmu]" HorizontalAlignment="Left"/>
+                            <Label Grid.Row="1" Grid.Column="1" Name="RezyserDane" Content="[Reżyser]" HorizontalAlignment="Left"/>
+                            <Label Grid.Row="2" Grid.Column="1" Name="RokWydaniaDane" Content="[Rok wydania]" HorizontalAlignment="Left"/>
+                            <Label Grid.Row="3" Grid.Column="1" Name="OcenaDane" Content="[Ocena]" HorizontalAlignment="Left"/>
+                            <Image Grid.Row="4" Grid.Column="1" Name="ZdjecieDane" />
+
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Znalezione" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                        <DataGrid Name="ZnalezioneSeanseDataGrid" Margin="5" AutoGenerateColumns="True" AutoGeneratingColumn="ZnalezioneSeanseDataGrid_AutoGeneratingColumn" SelectionChanged="ZnalezioneSeanseDataGrid_SelectionChanged"/>
+                    </GroupBox>
+                    <Button Name="Rezerwuj" Content="Zarezerwuj" Grid.Row="3" Grid.Column="2" Click="Rezerwuj_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Twoje rezerwacje">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <GroupBox Header="Kryteria wyszukiwania" Grid.Row="0">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                                <Style TargetType="DatePicker">
+                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="Margin" Value="5"/>
+                                </Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Margin" Value="5"/>
+                                    <Setter Property="Width" Value="100"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Data od : "/>
+                            <DatePicker Grid.Column="1"/>
+                            <Label Grid.Column="2" Content="Data do : "/>
+                            <DatePicker Grid.Column="3"/>
+                            <Button Name="Wyszukaj" Grid.Column="4" Content="Wyszukaj" Click="Wyszukaj_Click"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Wyniki wyszukiwania" Grid.Row="1">
+                        <Grid>
+                            <DataGrid Name="RezerwacjeDataGrid" Margin="5" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Anuluj rezerwacje">
+                <Grid>
+                    <Grid.Resources>
+                        <Style TargetType="GroupBox">
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Width" Value="Auto"/>
+                            <Setter Property="Height" Value="60"/>
+                            <Setter Property="Margin" Value="5"/>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Column="0" Grid.RowSpan="2" Header="Twoje rezerwacje">
+                        <DataGrid Margin="5" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID Seansu" Width="*"/>
+                                <DataGridTextColumn Header="Czas rozpoczęcia" Width="*"/>
+                                <DataGridTextColumn Header="Rzad" Width="65"/>
+                                <DataGridTextColumn Header="Miejsce" Width="65"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                    <GroupBox Grid.Column="1" Header="Szczegóły seansu" Width="275">
+                        <Grid>
+                            <Grid.Resources>
+                                <Style TargetType="Label">
+                                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Tytuł filmu : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Reżyser : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Rok wydania : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="3" Grid.Column="0" Content="Ocena : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Zdjecie : " HorizontalAlignment="Right"/>
+                            <Label Grid.Row="0" Grid.Column="1" Name="SzczegolyTytulFilmu" Content="[Tytuł filmu]" HorizontalAlignment="Left"/>
+                            <Label Grid.Row="1" Grid.Column="1" Name="SzczegolyRezyser" Content="[Reżyser]" HorizontalAlignment="Left"/>
+                            <Label Grid.Row="2" Grid.Column="1" Name="SzczegolyRokWydania" Content="[Rok wydania]" HorizontalAlignment="Left"/>
+                            <Label Grid.Row="3" Grid.Column="1" Name="SzczegolyOcena" Content="[Ocena]" HorizontalAlignment="Left"/>
+                            <Image Grid.Row="4" Grid.Column="1" Name="SzczegolyZdjecie" HorizontalAlignment="Center"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button Grid.Row="1" Grid.Column="1" Content="Anuluj"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

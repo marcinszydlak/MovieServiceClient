@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Common.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Common.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ClientModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientID" type="xs:int" />
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClientModel" nillable="true" type="tns:ClientModel" />
+  <xs:complexType name="ArrayOfSeanceModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeanceModel" nillable="true" type="tns:SeanceModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeanceModel" nillable="true" type="tns:ArrayOfSeanceModel" />
+  <xs:complexType name="SeanceModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CinemaHallID" type="xs:int" />
+      <xs:element minOccurs="0" name="MovieID" type="xs:int" />
+      <xs:element minOccurs="0" name="MovieInfo" nillable="true" type="tns:MovieModel" />
+      <xs:element minOccurs="0" name="SeanceDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SeanceID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeanceModel" nillable="true" type="tns:SeanceModel" />
+  <xs:complexType name="MovieModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cast" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageContent" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="MovieID" type="xs:int" />
+      <xs:element minOccurs="0" name="Note" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PublicationDate" type="xs:int" />
+      <xs:element minOccurs="0" name="Regisseur" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MovieModel" nillable="true" type="tns:MovieModel" />
+  <xs:complexType name="ReservationModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientID" type="xs:int" />
+      <xs:element minOccurs="0" name="ReservationDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReservationID" type="xs:int" />
+      <xs:element minOccurs="0" name="ReservationInfo" nillable="true" type="tns:ArrayOfReservationPositionModel" />
+      <xs:element minOccurs="0" name="SeanceID" type="xs:int" />
+      <xs:element minOccurs="0" name="SeanceInfo" nillable="true" type="tns:SeanceModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReservationModel" nillable="true" type="tns:ReservationModel" />
+  <xs:complexType name="ArrayOfReservationPositionModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReservationPositionModel" nillable="true" type="tns:ReservationPositionModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReservationPositionModel" nillable="true" type="tns:ArrayOfReservationPositionModel" />
+  <xs:complexType name="ReservationPositionModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Position" type="xs:int" />
+      <xs:element minOccurs="0" name="ReservationID" type="xs:int" />
+      <xs:element minOccurs="0" name="ReservationPositionID" type="xs:int" />
+      <xs:element minOccurs="0" name="Row" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReservationPositionModel" nillable="true" type="tns:ReservationPositionModel" />
+  <xs:complexType name="ArrayOfReservationModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReservationModel" nillable="true" type="tns:ReservationModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReservationModel" nillable="true" type="tns:ArrayOfReservationModel" />
+  <xs:complexType name="ArrayOfMovieModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MovieModel" nillable="true" type="tns:MovieModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovieModel" nillable="true" type="tns:ArrayOfMovieModel" />
+  <xs:complexType name="CinemaHallModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CinemaHallID" type="xs:int" />
+      <xs:element minOccurs="0" name="Positions" type="xs:int" />
+      <xs:element minOccurs="0" name="Rows" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CinemaHallModel" nillable="true" type="tns:CinemaHallModel" />
+  <xs:complexType name="ArrayOfCinemaHallModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CinemaHallModel" nillable="true" type="tns:CinemaHallModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCinemaHallModel" nillable="true" type="tns:ArrayOfCinemaHallModel" />
+</xs:schema>
