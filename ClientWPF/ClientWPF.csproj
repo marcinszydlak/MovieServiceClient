@@ -57,6 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AktualizujRezerwacje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -65,13 +69,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AktualizujRezerwacje.xaml.cs">
+      <DependentUpon>AktualizujRezerwacje.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helpers\ComplexQueries.cs" />
     <Compile Include="Helpers\PositionData.cs" />
-    <Compile Include="Helpers\ReservationsData.cs" />
+    <Compile Include="Helpers\ReservationData.cs" />
+    <Compile Include="Helpers\ReservationPositionsData.cs" />
     <Compile Include="Helpers\SeanceData.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>

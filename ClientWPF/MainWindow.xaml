@@ -50,7 +50,7 @@
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" Content="Zalogowany jako :"/>
             <Label Grid.Column="1" Name="UzytkownikLabel" Content="Uzytkownik"/>
-            <Button Grid.Column="2" Content="Wyloguj"/>
+            <Button Name="Wyloguj" Grid.Column="2" Content="Wyloguj" Click="Wyloguj_Click"/>
         </Grid>
         <TabControl Name="MainTabControl" Grid.Row="1">
             <TabItem Header="Zarezerwuj">
@@ -61,7 +61,8 @@
                         </Style>
                     </Grid.Resources>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition Width="239.246"/>
+                        <ColumnDefinition Width="10.754"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -69,7 +70,7 @@
                         <RowDefinition/>
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <GroupBox Header="Dane wyszukiwania" Grid.Row="0" Grid.Column="0">
+                    <GroupBox Header="Dane wyszukiwania" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="80"/>
@@ -90,7 +91,7 @@
                             <Button Name="ZatwierdzWyszukiwanieButton" Content="Wyszukaj seanse" Grid.Row="3" Grid.ColumnSpan="2" Click="ZatwierdzWyszukiwanieButton_Click" Height="21" Margin="0,5,0,0" VerticalAlignment="Top"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Dane filmu" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+                    <GroupBox Header="Dane filmu" Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
                         <Grid>
                             <Grid.Resources>
                                 <Style TargetType="Label">
@@ -121,10 +122,10 @@
 
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Znalezione" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+                    <GroupBox Header="Znalezione" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2">
                         <DataGrid Name="ZnalezioneSeanseDataGrid" Margin="5" AutoGenerateColumns="True" AutoGeneratingColumn="ZnalezioneSeanseDataGrid_AutoGeneratingColumn" SelectionChanged="ZnalezioneSeanseDataGrid_SelectionChanged"/>
                     </GroupBox>
-                    <Button Name="Rezerwuj" Content="Zarezerwuj" Grid.Row="3" Grid.Column="2" Click="Rezerwuj_Click"/>
+                    <Button Name="Rezerwuj" Content="Zarezerwuj" Grid.Row="2" Grid.Column="2" Click="Rezerwuj_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Twoje rezerwacje">
@@ -158,20 +159,20 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0" Content="Data od : "/>
-                            <DatePicker Grid.Column="1"/>
+                            <DatePicker Name="RezerwacjeOd" Grid.Column="1"/>
                             <Label Grid.Column="2" Content="Data do : "/>
-                            <DatePicker Grid.Column="3"/>
+                            <DatePicker Name="RezerwacjeDo" Grid.Column="3"/>
                             <Button Name="Wyszukaj" Grid.Column="4" Content="Wyszukaj" Click="Wyszukaj_Click"/>
                         </Grid>
                     </GroupBox>
                     <GroupBox Header="Wyniki wyszukiwania" Grid.Row="1">
                         <Grid>
-                            <DataGrid Name="RezerwacjeDataGrid" Margin="5" />
+                            <DataGrid Name="RezerwacjeDataGrid" Margin="5" AutoGenerateColumns="True" AutoGeneratingColumn="RezerwacjeDataGrid_AutoGeneratingColumn" />
                         </Grid>
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Anuluj rezerwacje">
+            <TabItem Header="Edytor rezerwacji">
                 <Grid>
                     <Grid.Resources>
                         <Style TargetType="GroupBox">
@@ -180,29 +181,36 @@
                         </Style>
                         <Style TargetType="Button">
                             <Setter Property="Width" Value="Auto"/>
-                            <Setter Property="Height" Value="60"/>
                             <Setter Property="Margin" Value="5"/>
                         </Style>
                     </Grid.Resources>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <GroupBox Grid.Column="0" Grid.RowSpan="2" Header="Twoje rezerwacje">
-                        <DataGrid Margin="5" >
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="ID Seansu" Width="*"/>
-                                <DataGridTextColumn Header="Czas rozpoczęcia" Width="*"/>
-                                <DataGridTextColumn Header="Rzad" Width="65"/>
-                                <DataGridTextColumn Header="Miejsce" Width="65"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                    <Grid Grid.Row="0" Grid.ColumnSpan="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label Content="Filtruj" Grid.Column="0" HorizontalAlignment="Left" Margin="5"/>
+                        <ComboBox Name="AktywneRezerwacjeComboBox" Grid.Column="1" Margin="5" Height="30" SelectionChanged="AktywneRezerwacje_SelectionChanged"/>
+                    </Grid>
+                    <GroupBox Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Header="Twoje rezerwacje" Grid.ColumnSpan="4" Margin="5">
+                        <DataGrid Margin="5" Name="RezerwacjeAktywneDataGrid" AutoGenerateColumns="True" AutoGeneratingColumn="RezerwacjeAktywneDataGrid_AutoGeneratingColumn" SelectionChanged="RezerwacjeAktywneDataGrid_SelectionChanged"/>
+
                     </GroupBox>
-                    <GroupBox Grid.Column="1" Header="Szczegóły seansu" Width="275">
+                    <Button Name="OdswiezButton" Grid.Row="0" Grid.Column="4" Content="Odśwież aktywne rezerwacje" Click="OdswiezButton_Click" Height="40"/>
+                    <GroupBox Grid.Column="4" Grid.Row="1" Header="Szczegóły seansu" Width="275">
                         <Grid>
                             <Grid.Resources>
                                 <Style TargetType="Label">
@@ -232,7 +240,19 @@
                             <Image Grid.Row="4" Grid.Column="1" Name="SzczegolyZdjecie" HorizontalAlignment="Center"/>
                         </Grid>
                     </GroupBox>
-                    <Button Grid.Row="1" Grid.Column="1" Content="Anuluj"/>
+                    <Grid Grid.Row="2" Grid.Column="4" Grid.RowSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Name="EdytujButton" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" VerticalAlignment="Stretch" Content="Edytuj" Click="EdytujButton_Click" Height="90"/>
+                        <Button Name="AnulujButton" Grid.Row="0" Grid.Column="1" Content="Anuluj" Click="AnulujButton_Click" Height="40"/>
+                        <Button Name="AnulujCaleButton" Grid.Row="1" Grid.Column="1" Content="Anuluj całą" Click="AnulujCaleButton_Click" Height="40"/>
+                    </Grid>
                 </Grid>
             </TabItem>
         </TabControl>

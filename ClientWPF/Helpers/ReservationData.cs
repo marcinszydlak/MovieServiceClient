@@ -24,7 +24,7 @@ namespace ClientWPF.Helpers
         {
             ReservationID = model.ReservationID;
             SeanceID = model.SeanceID;
-            Time = model.ReservationDate;
+            Time = model.SeanceInfo.SeanceDate;
             Movie = model.SeanceInfo.MovieInfo.Title;
             StringBuilder builder = new StringBuilder();
 

@@ -38,6 +38,12 @@
   <wsdl:message name="IClientService_AddReservationMultiplePosition_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddReservationMultiplePositionResponse" />
   </wsdl:message>
+  <wsdl:message name="IClientService_UpdateReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReservation" />
+  </wsdl:message>
+  <wsdl:message name="IClientService_UpdateReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReservationResponse" />
+  </wsdl:message>
   <wsdl:message name="IClientService_GetReservation_InputMessage">
     <wsdl:part name="parameters" element="tns:GetReservation" />
   </wsdl:message>
@@ -112,6 +118,10 @@
     <wsdl:operation name="AddReservationMultiplePosition">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/AddReservationMultiplePosition" message="tns:IClientService_AddReservationMultiplePosition_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClientService/AddReservationMultiplePositionResponse" message="tns:IClientService_AddReservationMultiplePosition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClientService/UpdateReservation" message="tns:IClientService_UpdateReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClientService/UpdateReservationResponse" message="tns:IClientService_UpdateReservation_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetReservation">
       <wsdl:input wsaw:Action="http://tempuri.org/IClientService/GetReservation" message="tns:IClientService_GetReservation_InputMessage" />
@@ -190,6 +200,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddReservationMultiplePosition">
       <soap:operation soapAction="http://tempuri.org/IClientService/AddReservationMultiplePosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReservation">
+      <soap:operation soapAction="http://tempuri.org/IClientService/UpdateReservation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

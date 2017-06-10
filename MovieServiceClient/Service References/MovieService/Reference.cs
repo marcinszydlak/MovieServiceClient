@@ -717,6 +717,12 @@ namespace MovieServiceClient.MovieService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/AddReservationMultiplePosition", ReplyAction="http://tempuri.org/IClientService/AddReservationMultiplePositionResponse")]
         System.Threading.Tasks.Task AddReservationMultiplePositionAsync(int seanceId, int clientId, int[] rows, int[] positions);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/UpdateReservation", ReplyAction="http://tempuri.org/IClientService/UpdateReservationResponse")]
+        void UpdateReservation(int reservationPositionId, int newRow, int newPosition);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/UpdateReservation", ReplyAction="http://tempuri.org/IClientService/UpdateReservationResponse")]
+        System.Threading.Tasks.Task UpdateReservationAsync(int reservationPositionId, int newRow, int newPosition);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientService/GetReservation", ReplyAction="http://tempuri.org/IClientService/GetReservationResponse")]
         MovieServiceClient.MovieService.ReservationModel GetReservation(int ReservationId);
         
@@ -837,6 +843,14 @@ namespace MovieServiceClient.MovieService {
         
         public System.Threading.Tasks.Task AddReservationMultiplePositionAsync(int seanceId, int clientId, int[] rows, int[] positions) {
             return base.Channel.AddReservationMultiplePositionAsync(seanceId, clientId, rows, positions);
+        }
+        
+        public void UpdateReservation(int reservationPositionId, int newRow, int newPosition) {
+            base.Channel.UpdateReservation(reservationPositionId, newRow, newPosition);
+        }
+        
+        public System.Threading.Tasks.Task UpdateReservationAsync(int reservationPositionId, int newRow, int newPosition) {
+            return base.Channel.UpdateReservationAsync(reservationPositionId, newRow, newPosition);
         }
         
         public MovieServiceClient.MovieService.ReservationModel GetReservation(int ReservationId) {

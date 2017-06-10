@@ -75,6 +75,20 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateReservation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="reservationPositionId" type="xs:int" />
+        <xs:element minOccurs="0" name="newRow" type="xs:int" />
+        <xs:element minOccurs="0" name="newPosition" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateReservationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetReservation">
     <xs:complexType>
       <xs:sequence>

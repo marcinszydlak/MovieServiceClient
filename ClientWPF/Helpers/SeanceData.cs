@@ -11,6 +11,8 @@ namespace ClientWPF.Helpers
 {
     public class SeanceData
     {
+        [DisplayName("SeansID")]
+        public int SeanceID { get; set; }
         [DisplayName("Tytuł")]
         public string Title { get; set; }
         [DisplayName("Godzina seansu")]
@@ -23,6 +25,7 @@ namespace ClientWPF.Helpers
         public int SalaID { get; set; }
         public SeanceData(SeanceModel model)
         {
+            SeanceID = model.SeanceID;
             MovieID = model.MovieID;
             Title = model.MovieInfo.Title;
             SeanceDate = model.SeanceDate;
